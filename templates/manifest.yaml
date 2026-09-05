@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: payments
+  name: payment
   namespace: roboshop
 type: Opaque
 data:
@@ -11,33 +11,33 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payments
+  name: payment
   namespace: roboshop
   labels: # these labels are deployment labels
-    app: payments
+    app: payment
     project: roboshop
     tier: app
 spec:
   replicas: 1
   selector:
     matchLabels: # these labels are used to find the pods
-      app: payments
+      app: payment
       project: roboshop
       tier: app
   template:
     metadata:
       labels: # these labels are pod labels
-        app: payments
+        app: payment
         project: roboshop
         tier: app
     spec:
       containers:
-      - name: payments
+      - name: payment
         image: "{{ .Values.deployment.imageURL }}:{{ .Values.deployment.imageVersion }}"
         imagePullPolicy: Always
         envFrom:
         - secretRef:
-            name: payments
+            name: payment
         env:    
           - name: AMQP_HOST
             valueFrom:
@@ -48,11 +48,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: payments
+  name: payment
   namespace: roboshop
 spec:
   selector:
-    app: payments
+    app: payment
     project: roboshop
     tier: app
   ports:
