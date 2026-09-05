@@ -38,8 +38,12 @@ spec:
         envFrom:
         - secretRef:
             name: payments
-        - secretRef:
-            name: rabbitmq    
+        env:    
+          - name: AMQP_HOST
+            valueFrom:
+              secretKeyRef:
+                name: rabbitmq 
+                key: AMQP_HOST   
 ---
 apiVersion: v1
 kind: Service
