@@ -49,6 +49,8 @@ spec:
         envFrom:
         - secretRef:
             name: payment
+        - configMapRef:
+            name: payment    
         env:    
           - name: AMQP_HOST
             valueFrom:
