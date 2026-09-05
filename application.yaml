@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: payments
+  name: payment
   namespace: argocd  # ArgoCD's namespace
   # dependency, lowest priorty will be created first
   annotations:
@@ -14,7 +14,7 @@ spec:
     targetRevision: main   # or a tag/commit hash
     path: .       # folder in repo with Kubernetes YAMLs
     helm:
-      releaseName: payments
+      releaseName: payment
       valueFiles:
       - values.yaml
   destination:
