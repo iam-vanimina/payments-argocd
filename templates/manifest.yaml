@@ -59,7 +59,7 @@ spec:
                 key: AMQP_HOST
           - name: PAYMENT_GATEWAY
             valueFrom:
-              - configMapKeyRef: 
+               configMapKeyRef: 
                 name: payment-cm
                 key: PAYMENT_GATEWAY         
 ---
