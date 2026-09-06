@@ -56,7 +56,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: rabbitmq 
-                key: AMQP_HOST   
+                key: AMQP_HOST
+          - name: PAYMENT_GATEWAY
+            valueFrom:
+              secretKeyRef: 
+                name: payment-secret 
+                key: PAYMENT_GATEWAY         
 ---
 apiVersion: v1
 kind: Service
