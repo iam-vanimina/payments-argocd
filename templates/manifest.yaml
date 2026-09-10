@@ -61,7 +61,14 @@ spec:
             valueFrom:
                configMapKeyRef: 
                 name: payment-cm
-                key: PAYMENT_GATEWAY         
+                key: PAYMENT_GATEWAY  
+        resources:
+          requests:
+             cpu: 100m
+             memory: 128Mi
+          limits:
+           cpu: 500m
+           memory: 512Mi                   
 ---
 apiVersion: v1
 kind: Service
