@@ -37,6 +37,8 @@ spec:
       tier: app
   template:
     metadata:
+      annotations:
+        instrumentation.opentelemetry.io/inject-python: "roboshop/roboshop-auto"
       labels: # these labels are pod labels
         app: payment
         project: roboshop
@@ -57,11 +59,7 @@ spec:
               secretKeyRef:
                 name: rabbitmq 
                 key: AMQP_HOST
-          - name: PAYMENT_GATEWAY
-            valueFrom:
-               configMapKeyRef: 
-                name: payment-cm
-                key: PAYMENT_GATEWAY  
+          
         resources:
           requests:
              cpu: 100m
