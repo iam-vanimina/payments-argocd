@@ -44,6 +44,7 @@ spec:
         project: roboshop
         tier: app
     spec:
+      serviceAccountName: payment # istio service account name
       containers:
       - name: payment
         image: "{{ .Values.deployment.imageURL }}:{{ .Values.deployment.imageVersion }}"
